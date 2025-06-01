@@ -1,6 +1,6 @@
 # REST API Playwright Tests
 
-This project contains automated API tests for the [FakerestAPI](https://fakerestapi.azurewebsites.net) "Books" endpoints, using [Playwright](https://playwright.dev/) and TypeScript.
+This project contains automated API tests for the [FakeRESTAPI](https://fakerestapi.azurewebsites.net) "Books" endpoints, using [Playwright](https://playwright.dev/) and TypeScript.
 
 ## Project Structure
 
