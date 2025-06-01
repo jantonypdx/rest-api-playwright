@@ -51,12 +51,12 @@ Output:
 
 The suite covers:
 
-- Retrieving all books
-- Retrieving a single book by ID
-- Handling non-existent book IDs (404)
-- Creating a new book
-- Updating an existing book
-- Deleting a book
+- GET - Retrieving all books
+- GET - Retrieving a single book by ID
+- GET - Handling non-existent book IDs (404)
+- POST - Creating a new book
+- PUT - Updating an existing book
+- DELETE - Deleting a book
 - Negative cases for invalid operations (some marked as `fixme` due to API limitations)
 
 ## Notes
