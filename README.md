@@ -61,8 +61,8 @@ The suite covers:
 
 ## Notes
 
-- Some negative tests are marked with `test.fixme` and skipped because the API does not enforce required fields or proper error codes.
-- Given the mocked behavior of the API, test data uses fixed, hardcoded IDs. In a real-world API scenario, unique IDs would be preferable as well additional steps to clean up after tests (i.e. via `beforeEach` or `afterEach` hooks).
+- Some negative tests are marked `test.fixme()` and skipped because the API does not enforce required fields or expected error codes. See the code for these tests. Code comments in the tests explain what is wrong and how the API developer should be notified.
+- Given the mocked behavior of the API, test data uses fixed, hardcoded IDs. In a real-world API scenario, unique IDs would be preferable as well additional steps to clean up after tests (i.e. via `beforeEach()` or `afterEach()` test hooks).
 
 ## Resources
 
