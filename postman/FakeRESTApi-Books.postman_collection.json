@@ -1,0 +1,251 @@
+{
+	"info": {
+		"_postman_id": "91ef2039-1058-4393-9b48-8a9aac9e2edb",
+		"name": "FakeRESTApi Books",
+		"description": "This collection is a set of RESTful calls and tests for the FakeRESTApi's Book endpoints.  \n[https://fakerestapi.azurewebsites.net](https://fakerestapi.azurewebsites.net)\n\nNote: this is a mocked API so calling POST, PUT, and DELETE on books won't actually create, modify, or delete the books, but will instead return the API responses you would expect with those calls (i.e. mocked).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15526669"
+	},
+	"item": [
+		{
+			"name": "Get all books",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"At least 1 book returned\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.be.greaterThan(0);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/Books",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"Books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get individual book",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Returned book has all expected properties\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.all.keys('id', 'title', 'description', 'pageCount', 'excerpt', 'publishDate');",
+							"});    ",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/Books/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"Books",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get invalid book returns 404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Title equals 'Not Found'\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.title).to.eql('Not Found');",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/Books/999999",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"Books",
+						"999999"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a new book",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Returned book has all expected properties\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.all.keys('id', 'title', 'description', 'pageCount', 'excerpt', 'publishDate');",
+							"});    ",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 201,\n    \"title\": \"Book 201\",\n    \"description\": \"Description for Book 201\",\n    \"pageCount\": 201,\n    \"excerpt\": \"Excerpt for Book 201\",\n    \"publishDate\": \"2025-06-01T00:00:00Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/Books",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"Books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a book's data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Returned book has all expected properties\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.all.keys('id', 'title', 'description', 'pageCount', 'excerpt', 'publishDate');",
+							"});    ",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 200,\n    \"title\": \"Book 789\",\n    \"description\": \"Description for Book 789\",\n    \"pageCount\": 789,\n    \"excerpt\": \"Excerpt for Book 200\",\n    \"publishDate\": \"2025-06-01T00:00:00Z\"\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/Books/200",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"Books",
+						"200"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a book",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/Books/200",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"Books",
+						"200"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://fakerestapi.azurewebsites.net/api/v1",
+			"type": "default"
+		}
+	]
+}

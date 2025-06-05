@@ -1,6 +1,6 @@
 # REST API Playwright Tests
 
-This project contains automated API tests for the [FakeRESTAPI](https://fakerestapi.azurewebsites.net) "Books" endpoints, using [Playwright](https://playwright.dev/) and TypeScript.
+This project contains automated API tests for the [FakeRESTAPI](https://fakerestapi.azurewebsites.net) "Books" endpoints, using [Playwright](https://playwright.dev/), [Postman's Newman](https://github.com/postmanlabs/newman), and TypeScript.
 
 ## Project Structure
 
@@ -9,7 +9,7 @@ This project contains automated API tests for the [FakeRESTAPI](https://fakerest
 ├── package.json
 ├── playwright.config.ts
 ├── tests/
-│   └── rest-api.spec.ts
+    └── rest-api.spec.ts
 ```
 
 - **tests/rest-api.spec.ts**: Main test suite for the Books API.
@@ -30,9 +30,9 @@ This project contains automated API tests for the [FakeRESTAPI](https://fakerest
 
 2. (Optional) Review or update the API base URL in [`playwright.config.ts`](playwright.config.ts).
 
-## Running the Tests
+## Running the Playwright Tests
 
-To run all API tests:
+To run all Playwright API tests:
 
 ```sh
 npm test
@@ -45,11 +45,31 @@ npx playwright test tests/rest-api.spec.ts
 ```
 
 Output:
-![Run all tests](docs/img/run-all-tests.png)
+![Run all Playwright tests](docs/img/run-all-playwright-tests.png)
+
+## Running Newman Tests
+
+A Postman collection is saved in a JSON file here:
+/postman/FakeRESTApi-Books.postman_collection.json
+
+This collection can be imported into Postman and run from Postman. Additionally, the tests in this collection can be run via Postman's Newman CLI:
+
+```sh
+npm newman
+```
+
+Or directly:
+
+```sh
+npx newman run postman/FakeRESTApi-Books.postman_collection.json
+```
+
+Output:
+![Run all Newman tests](docs/img/run-all-newman-tests.png)
 
 ## Test Coverage
 
-The suite covers:
+These test suites cover:
 
 - GET - Retrieving all books
 - GET - Retrieving a single book by ID
@@ -68,6 +88,7 @@ The suite covers:
 
 - [FakerestAPI Documentation](https://fakerestapi.azurewebsites.net/index.html)
 - [Playwright API Testing](https://playwright.dev/docs/api-testing)
+- [Postman Newman Testing](https://learning.postman.com/docs/collections/using-newman-cli/command-line-integration-with-newman/)
 
 ---
 
